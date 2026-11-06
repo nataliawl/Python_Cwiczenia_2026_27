@@ -57,7 +57,7 @@ class TestPoint(unittest.TestCase):
         self.point24 = Point(2, 4)
         self.point24_clone = Point(2, 4)
         self.point32 = Point(3,2)
-        self.testint = 5
+        self.pom_int = 5
 
     def test_str(self):
         self.assertEqual(str(self.point24), '(2, 4)')
@@ -66,29 +66,29 @@ class TestPoint(unittest.TestCase):
         self.assertEqual(repr(self.point24), 'Point(2, 4)')
 
     def test_eq(self):
-        self.assertEqual(self.point24 == self.point24_clone, True)
-        self.assertEqual(self.point24 == self.point32, False)
-        self.assertEqual(self.point24 == self.testint, False)
+        self.assertTrue(self.point24 == self.point24_clone)
+        self.assertFalse(self.point24 == self.point32)
+        self.assertFalse(self.point24 == self.pom_int)
 
     def test_ne(self):
-        self.assertEqual(self.point24 != self.point24_clone, False)
-        self.assertEqual(self.point24 != self.point32, True)
-        self.assertEqual(self.point24 != self.testint, True)
+        self.assertFalse(self.point24 != self.point24_clone)
+        self.assertTrue(self.point24 != self.point32)
+        self.assertTrue(self.point24 != self.pom_int)
 
     def test_add(self):
-        self.assertRaises(TypeError, lambda: self.point24 + self.testint)
+        self.assertRaises(TypeError, lambda: self.point24 + self.pom_int)
         self.assertEqual(self.point24 + self.point24, Point(4, 8))
 
     def test_sub(self):
-        self.assertRaises(TypeError, lambda: self.point24 - self.testint)
+        self.assertRaises(TypeError, lambda: self.point24 - self.pom_int)
         self.assertEqual(self.point24 - self.point24, Point(0, 0))
 
     def test_mul(self):
         self.assertEqual(self.point24 * self.point24, 16)
-        self.assertRaises(TypeError, lambda: self.point24 * self.testint)
+        self.assertRaises(TypeError, lambda: self.point24 * self.pom_int)
 
     def test_cross(self):
-        self.assertRaises(TypeError, lambda: self.point24.cross(self.testint))
+        self.assertRaises(TypeError, lambda: self.point24.cross(self.pom_int))
         self.assertEqual(self.point24.cross(self.point24), 0)
 
     def test_length(self):
